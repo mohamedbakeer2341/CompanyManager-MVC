@@ -1,0 +1,41 @@
+﻿@model int
+
+<td>
+    <a asp-action="Details" asp-route-id="@Model" class="btn btn-warning">
+        <i class="fas fa-eye"></i> Details
+    </a>
+</td>
+<td>
+    <a asp-action="Edit" asp-route-id="@Model" class="btn btn-success">
+        <i class="fas fa-edit"></i> Update
+    </a>
+</td>
+<td>
+    <!-- Button to trigger modal for delete confirmation -->
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal-@Model">
+        <i class="fas fa-trash"></i> Delete
+    </button>
+
+    <!-- Modal for each department -->
+    <div class="modal fade" id="deleteConfirmationModal-@Model" tabindex="-1" aria-labelledby="deleteModalLabel-@Model" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel-@Model">Confirm Deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this entry ? This action cannot be undone.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Go Back</button>
+                    <!-- Delete form -->
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" name="Id" value="@Model" />
+                        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</td>

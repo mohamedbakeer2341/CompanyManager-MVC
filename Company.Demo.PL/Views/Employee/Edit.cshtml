@@ -1,0 +1,21 @@
+﻿@model EmployeeViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <div class="form-group">
+        <img src="~/files/images/@Model.ImageName" width="75" class="img-fluid rounded-circle" />
+        <input asp-for="ImageName" hidden/>
+    </div>
+    <partial name="PartialViews\CreateEditEmployeePartial.cshtml" />
+
+    <input type="submit" value="Edit" class="btn btn-primary" />
+    <a asp-controller="Employee" asp-action="Index" class="btn btn-light">Back To List</a>
+</form>
+
+@section ValidationScriptsSection {
+    <partial name="_ValidationScriptsPartial" />
+}
